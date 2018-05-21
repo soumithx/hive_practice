@@ -1,0 +1,15 @@
+Map Join --> Map join is another type of join in hive,also called as Auto map join
+             Regular join in hive uses too much activity spending on shuffling the data,it slows down hive queries.
+	     Join could perform within a mapper without using map and reduce.
+	    *If one of the tables in the join is small table,it loaded into the memory.
+
+ Step 1: it creates local map reduce task before it creats a orignal map reduce task
+ Step 2: this map reduce task read data of small table and save it into the in-memory hash table,then to hash table file
+
+ Step 3: when original map reduce task started,it moves to hdfs distrubuted cache,it will populate each mapper-local disk
+ Step 4: then it will perform join operation in map phase
+
+
+Config:  set hive.auto.convert.join=true;
+set hive.mapjoin.smalltable.filesize = 30000000;
+
