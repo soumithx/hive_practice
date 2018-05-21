@@ -1,0 +1,13 @@
+smbm join : is same type of join like smb join,but it will perform only on map side.
+	   it can avoid caching all rows in the memory like map join does.
+--> to perform smbm join,the join tables must be same bucket,sort,and join condition column
+
+Config:
+ SET hive.auto.convert.join=true;
+SET hive.auto.convert.sortmerge.join=true
+SET hive.optimize.bucketmapjoin=true;
+SET hive.optimize.bucketmapjoin.sortedmerge=true;
+SET hive.auto.convert.sortmerge.join.noconditionaltask=true;
+ SET hive.auto.convert.sortmerge.join.bigtable.selection.policy=
+org.apache.hadoop.hive.ql.optimizer.TableSizeBasedBigTableSelectorForAutoSM
+J;

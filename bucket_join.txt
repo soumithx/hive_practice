@@ -1,0 +1,5 @@
+Bucket Join : Bucket map join is one of the map join,it fetches the required bucket data instead of fetching the whole table data.
+
+Config: SET hive.optimize.bucketmapjoin = true;
+	SET hive.optimize.bucketmapjoin.sortedmerge = true;
+	SET hive.input.format=org.apache.hadoop.hive.ql.io.BucketizedHiveInputFormat;
