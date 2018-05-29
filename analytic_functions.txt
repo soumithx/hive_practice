@@ -28,5 +28,17 @@ The range of values returned by cume_dist is >0 to <= 1
 
 
 
-percent_rank:
-Ntile:
+percent_rank: calculates the relative rank of a row within the group of rows.
+ PERCENT_RANK ranks a value by calculating its rank minus 1 (rk - 1), and dividing that value by the number of rows in the partition minus 1 (nr - 1). For each row in a partition PERCENT_RANK returns (rk -1) / (nr - 1). A float value between 0 and 1 is returned which represents a percentage.
+
+
+
+
+Ntile:NTILE is an analytic function. It divides an ordered data set into a number of buckets indicated by expr and assigns the appropriate bucket number to each row. The buckets are numbered 1 through expr .
+
+1   S1  75
+1   S2  83
+1   S4  83
+2   S3  91
+2   S6  92
+2   S5  93
